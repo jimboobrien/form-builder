@@ -37,6 +37,22 @@
 						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="html" value="HTML"></li>
 						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="section" value="Section"></li>
 						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="page" value="Page"></li>
+					
+					</ol>
+					
+					<ol class="field_type">
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="name" value="Name"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="date" value="Date"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="time" value="Time"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="phone" value="Phone"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="address" value="Address"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="website" value="Website"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="email" value="Email"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="fileupload" value="File Upload"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="captcha" value="CAPTCHA"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" data-type="list" value="List"></li>
+						<li><input type="button" class="button ui-draggable ui-draggable-handle" value="Signature" data-type="signature" onclick=
+						"StartAddField('signature');" onkeypress="StartAddField('signature');"></li>
 					</ol>
 				</div>
 			</div>
