@@ -1,113 +1,95 @@
-/********************************
- * Introduction to DOM Events
- * with JavaScript
- * 1.4.1
- *
- *******************************/
-
-
-
-
-/********************************
- * Drag and Drop
- * 1.4.1.7
- *
- *******************************/
-
 (function (window, document, undefined) {
 
-var childEl = document.querySelector( '.child' ),
-    dragDemo = document.getElementById( 'drag-and-drop-demo' ),
-    movable = document.querySelector( '.move' ),
-    copyable = document.querySelector( '.copy' ),
-    droppable = document.querySelector( '.droppable' ),
-    moving,
-    copying,
-    classes,
-    moveableDragStartHandler,
-    moveableDragEndHandler,
-    droppableEnterHandler,
-    droppableLeaveHandler,
-    dropHandler;
+	var dropBox = document.getElementById( 'dropzone' );
+	var thebox;
+	var thefield;
+	var sText;
+	var textArea;
+	var count = 1;
+
+	document.getElementById("pegasus-single-text").addEventListener("click", function(){
+		sText = document.createElement( 'input' );
+		sText.setAttribute( 'type', 'input_' + count );
+		sText.setAttribute('name', 'input_' + count );
+		//sText = createBox( sText );
+		dropBox.appendChild( sText );
+		count = count + 1;
+	});
+
+	document.getElementById("pegasus-textarea").addEventListener("click", function(){
+		textArea = document.createElement( 'textarea' );
+		textArea.setAttribute( 'rows', '4');
+		textArea.setAttribute('cols', '50');
+		//textArea = createBox( textArea );
+		dropBox.appendChild( textArea );
+		count = count + 1;
+	});
+
+
+	/*document.querySelector('.duplicate').addEventListener("click", function(){
+		newCopy = this.parentElement.parentElement.parentElement.cloneNode( true);
+		//newCopy.setAttribute(  );
+		dropBox.appendChild( newCopy );
+	});
+	*/
+	
+	document.querySelector('.delete').addEventListener("click", function(){
+		this.parentElement.parentElement.parentElement.remove();
+	});
+	
+	
+	
+	
+
+	function insertFirstbox() {
+		let frag = document.createRange().createContextualFragment('<li id="item-1" class="draggable item "><div class="item-header"><div class="pull-left">Single Line Text: Field ID 1</div><div class="pull-right"><i class="open-close fa fa-caret-up" aria-hidden="true"></i><i class="duplicate fa fa-files-o" onclick="duplicateItem()" aria-hidden="true"></i><i class="delete fa fa-times" onclick="deleteItem()" aria-hidden="true"></i></div></div><div class="inner-content"><input type="text" name="fName" value="Field Name"/></div></li>');
+		dropBox.appendChild( frag );
+		/*var containingLi = document.createElement( 'li' );
+		containingLi.setAttribute( 'id', 'item-' + count );
+		containingLi.setAttribute( 'class', 'draggable' );
+		containingLi.classList.add( 'item' );
+		var headerDiv =  document.createElement( 'div' );
+		headerDiv.setAttribute( 'class', 'item-header' );
+		*/
+		
+
+	}
 
 
 
+	function createBox() {
+		//theBox = document.createElement( 'div' );
+		//console.log( sText );
+		//console.log( sText );
+		//var dFrag = document.createDocumentFragment();
+		//dFrag.appendChild( test.innerHTML );
+
+		//theBox.appendChild( dFrag );
+
+	}
 
 
-moveableDragStartHandler = function moveableDragStartHandler( event ) {
 
+	function initialize() {
 
-  if ( event.target.classList.contains( 'copy' ) ) {
-    copying = event.target;
-  }
-  if ( event.target.classList.contains( 'move' ) ) {
-    moving = event.target;
-    moving.classList.add( 'active' );
-  }
+		if ( dropBox.children.length >= 0 ) {
+			insertFirstbox();
+			//createBox();
+			//dropBox.appendChild( theBox );
+		}
 
-  event.dataTransfer.setData( 'text/plain', event.target.classList );
+	}
 
-};
+	initialize();
 
-moveableDragEndHandler = function moveableDragEndHandler( event ) {
-
-  event.target.classList.remove( 'active' );
-  droppable.classList.remove( 'active' );
-
-};
-
-droppableEnterHandler = function droppableEnterHandler( event ) {
-
-  event.preventDefault();
-  droppable.classList.add( 'active' );
-
-};
-
-droppableLeaveHandler = function droppableLeaveHandler( event ) {
-
-  droppable.classList.remove( 'active' );
-
-};
-
-dropHandler = function dropHandler( event ) {
-
-
-  event.preventDefault();
-  classes = event.dataTransfer.getData( 'text' );
-
-
-  if ( classes.indexOf( 'copy' ) > -1 ) {
-
-    newCopy = copying.cloneNode( true );
-    droppable.appendChild( newCopy );
-    copying = null;
-
-  }
-
-  if ( classes.indexOf( 'move' ) > -1 ) {
-
-    droppable.appendChild( moving );
-    moving.classList.remove( 'active' );
-    moving = null;
-
-  }
-
-  droppable.classList.remove( 'active' );
-
-
-};
-
-movable.addEventListener( 'dragstart', moveableDragStartHandler, false );
-movable.addEventListener( 'dragend', moveableDragEndHandler, false );
-
-copyable.addEventListener( 'dragstart', moveableDragStartHandler, false );
-
-droppable.addEventListener( 'dragenter', droppableEnterHandler, false );
-droppable.addEventListener( 'dragover', droppableEnterHandler, false );
-droppable.addEventListener( 'dragleave', droppableLeaveHandler, false );
-droppable.addEventListener( 'drop', dropHandler, false );
 
 })(window, document);
 
 
 
+
+
+$(document).ready(function() {
+	// executes when HTML-Document is loaded and DOM is ready
+	//alert("document is ready");
+});
